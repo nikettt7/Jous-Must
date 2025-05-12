@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joust HTML5 Replica</title>
+    <style>
+        @font-face {
+            font-family: 'ArcadeFont';
+            src: url('data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAVMAA0AAAAAChwAAAT1AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GYACCWggEEQgKnHSVPQtIAAE2AiQDSAQgBYwGB4FIDG8PUVRNXTJkPw/cbLJRo02TiNV+PYb6zAx7kbysoK+m+/tHBxZfAZGgBAAMPkYBwfD//v7W2XvfP23/jzuTZrI1/y6J1qTBLNEIGZt09Sqp6IqEiJDMTCEQSFbCBLwzVq6g6QvSJZ0XzMuDcU8TbCIIZUc4VJz83m00zMcDm8PNrGCTNMbOxq1sBgzZsJgYGLQA+l81MBfAx+tCMYZMXpvsjXHkLq0k2TRtRuq0IrGJKLuTONt9E4jnH58F/r/W2jvDzORGkiCpEonI7n3wAAFhj4cDiBAJSGIVEiVCVJpUe/OWp5QCSdvZFhgDmKAFwDDMBACYzb1lDAAYn32VEgBQPvMJSACCKEsYAZCUHCkAwkhYDCvhKgcIEn0KEABuQ6QO9Fl/xLf7xnBEr7dGPxCHUAZy6eFNyVyprw59UW+PKXmSKvWuO3L1tHr12uU/D0l7EoQkfQw5Xw7X0PqPCg0pI5UyCNt0V9XGKlMiODlSG6sK3aSRKD/UvUvz52Lnr1f3TMZR1+xaHjVjYbK9m1RQPLbdO9OuRRZXv7dkZiSQ78vcUFTWtfdISXdmVXXnMQw7tHjhztb31lxq36qMGa5dUPbr4vWLFrx3ZO5aVNY2q6q8aVjNgZlXL15fU9IrKmOzK8G9C0sr3uH6zcJYQBSVvdNLK6seSioZyiiM42p2LBGFVUzVAG1t/2MlpVEzFg7X7hIzY1FVUMY93XwLxUTZnqvHMqYnQiK/rJ/JMlwu+sYOl5ByTXGzBH9+W9OeDLlpYVb9zg17sPzuVPtdTbtmqTYjH9ZKVf0bHm7YEBSXMlnd7LgU5pQn+S1vL5pMmTVZlVFN3kLXppq0/C+pWJPQ+/tIlHaSidS4X1dUTt9t/nNiY+HQUJxdGmF7c6YKGK9M6mRmcn9QLCcqcvsvgc9nspTqLVdqfF/HCZUFKqbKOeW23J/v1MJADKVrXG7n9HU1KdJ+qaPD2VC3/GZZt27Vnsa8rNJBZtPBhrGG3Oy55U1zGw4xpNbULa2rIiUnvzgfZfWvvJhFXVjTnpddhOuKUVr7PIdHOTVVrK1eKJ4+N6e6Mc1XmJLZkJZTXF7OuFz5xatqKc+qqVvO9SvLSc5vXN1EpVfl5tTMGFc5bGF91fK6JT6UkpNfXC/M92w5eTk1T1+7LFp2rW5V6s8fjXV5VuLVvH8ywYRYDw97KneMq9KcXD8SSSU0oLGYGMm0dHfr1/Pq1Lq7u9vRE0GpPiLY7erWHb3Q3fF7V1eHbn+MG5FyuV1Hv+zu7HTq7Zc6ursdOn6Rf1q6aJHbPYVdsmjdcZ6bIQO0o8wQ4F9MjSNDeMw67I7yiHp2B0CIsAkORPNzSEfq2vRPdZHfVU/rHXCBELGSE7H+eCTZkZRojM6X0+q+N2LS+3lkH79ys/qptjfKIwYOEqjPZS7UDCmVMgCvnmOOa7BqfhQjg4mOQaAdgA02koxnM8G6FAIDAJjO5pCVT6NNwHQGENDIZoCgkBUAlrUGwFYhByBghQGQhMWASoOJigG7sQUByDq7w5FzLhyO3HObCCfOpULEkXN+gZJLPiBYcg0CKLnFJOQKLp4ZQVNnIy4qbDbK9FQOGGWWYfaqNnQmjHf0aISh9sSDOqVcpxIzHUZkTsrVkDFrKXZCz7KE57YS4SyzjF5eMRvJPMWiAZnMbdnbgCvtPnQWIV5MWKTFLLNbJdv51iB7jdgzavPQOZvVqnNWK9AzahMb0+j9P1OVOcYKlNaYXM9EjQEA</data:application/font-woff2;charset=utf-8;base64,>
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'ArcadeFont', monospace;
+            color: #fff;
+        }
+
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: auto;
+        }
+
+        canvas {
+            display: block;
+            background-color: #000;
+            image-rendering: pixelated;
+        }
+
+        #menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #title {
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #ffcc00;
+            text-shadow: 4px 4px 0px #660000;
+        }
+
+        .menu-button {
+            font-family: 'ArcadeFont', monospace;
+            font-size: 24px;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #660000;
+            color: #ffcc00;
+            border: 4px solid #ffcc00;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .menu-button:hover {
+            background-color: #990000;
+            transform: scale(1.05);
+        }
+
+        #game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+
+        #game-over h2 {
+            font-size: 48px;
+            color: #ff0000;
+            margin-bottom: 30px;
+        }
+
+        #score-display {
+            font-size: 24px;
+            color: #ffcc00;
+            margin-bottom: 30px;
+        }
+
+        #hud {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            color: #ffcc00;
+        }
+
+        #controls-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        
+        <div id="menu">
+            <div id="title">JOUST</div>
+            <button class="menu-button" id="one-player">ONE PLAYER</button>
+            <button class="menu-button" id="two-player">TWO PLAYERS</button>
+        </div>
+        
+        <div id="game-over">
+            <h2>GAME OVER</h2>
+            <div id="score-display">SCORE: 0</div>
+            <button class="menu-button" id="play-again">PLAY AGAIN</button>
+        </div>
+        
+        <div id="hud">
+            <div id="p1-score">P1: 0</div>
+            <div id="p2-score">P2: 0</div>
+            <div id="lives">LIVES: 3</div>
+            <div id="wave">WAVE: 1</div>
+        </div>
+        
+        <div id="controls-info">
+            P1: SPACE TO FLAP | P2: UP ARROW TO FLAP
+        </div>
+    </div>
+
+    <script>
+        // Game constants
+        const CANVAS_WIDTH = 800;
+        const CANVAS_HEIGHT = 600;
+        const GRAVITY = 0.4;
+        const FLAP_POWER = -8;
+        const FRICTION = 0.98;
+        const MAX_SPEED = 10;
+        
+        // Game state
+        let gameState = 'menu'; // menu, playing, gameOver
+        let playerCount = 1;
+        let wave = 1;
+        let score = [0, 0]; // Player 1 and 2 scores
+        let lives = 3;
+        let platforms = [];
+        let eggs = [];
+        let enemies = [];
+        let pterodactyls = [];
+        let lastEnemySpawn = 0;
+        let lastPterodactylSpawn = 0;
+        let enemySpawnInterval = 5000; // milliseconds
+        let pterodactylSpawnInterval = 15000; // milliseconds
+        let enemySpawnChance = 0.7; // Chance an enemy spawns when interval is met
+        let pterodactylSpawnChance = 0.3; // Chance a pterodactyl appears
+        
+        // HTML Elements
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const menu = document.getElementById('menu');
+        const gameOverScreen = document.getElementById('game-over');
+        const scoreDisplay = document.getElementById('score-display');
+        const p1ScoreDisplay = document.getElementById('p1-score');
+        const p2ScoreDisplay = document.getElementById('p2-score');
+        const livesDisplay = document.getElementById('lives');
+        const waveDisplay = document.getElementById('wave');
+        
+        // Event listeners for menu buttons
+        document.getElementById('one-player').addEventListener('click', () => startGame(1));
+        document.getElementById('two-player').addEventListener('click', () => startGame(2));
+        document.getElementById('play-again').addEventListener('click', () => {
+            gameOverScreen.style.display = 'none';
+            menu.style.display = 'flex';
+        });
+        
+        // Input handling
+        const keys = {};
+        window.addEventListener('keydown', (e) => {
+            keys[e.code] = true;
+            
+            // Prevent spacebar from scrolling the page
+            if (e.code === 'Space') {
+                e.preventDefault();
+            }
+        });
+        
+        window.addEventListener('keyup', (e) => {
+            keys[e.code] = false;
+        });
+        
+        // Player class
+        class Player {
+            constructor(x, y, isPlayerTwo = false) {
+                this.x = x;
+                this.y = y;
+                this.width = 40;
+                this.height = 40;
+                this.velocityX = 0;
+                this.velocityY = 0;
+                this.isPlayerTwo = isPlayerTwo;
+                this.isFlapping = false;
+                this.direction = 1; // 1 for right, -1 for left
+                this.invulnerable = false;
+                this.invulnerableTimer = 0;
+                this.flapKey = isPlayerTwo ? 'ArrowUp' : 'Space';
+                this.moveLeftKey = isPlayerTwo ? 'ArrowLeft' : 'KeyA';
+                this.moveRightKey = isPlayerTwo ? 'ArrowRight' : 'KeyD';
+                this.color = isPlayerTwo ? '#00AAFF' : '#FFCC00';
+            }
+            
+            update(deltaTime) {
+                // Movement controls
+                if (keys[this.flapKey]) {
+                    if (!this.isFlapping) {
+                        this.velocityY += FLAP_POWER;
+                        this.isFlapping = true;
+                        // SOUND: Flap effect
+                    }
+                } else {
+                    this.isFlapping = false;
+                }
+                
+                if (keys[this.moveLeftKey]) {
+                    this.velocityX -= 0.5;
+                    this.direction = -1;
+                }
+                
+                if (keys[this.moveRightKey]) {
+                    this.velocityX += 0.5;
+                    this.direction = 1;
+                }
+                
+                // Apply physics
+                this.velocityY += GRAVITY;
+                this.velocityX *= FRICTION;
+                
+                // Limit speed
+                if (this.velocityX > MAX_SPEED) this.velocityX = MAX_SPEED;
+                if (this.velocityX < -MAX_SPEED) this.velocityX = -MAX_SPEED;
+                if (this.velocityY > MAX_SPEED) this.velocityY = MAX_SPEED;
+                if (this.velocityY < -MAX_SPEED) this.velocityY = -MAX_SPEED;
+                
+                // Update position
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+                
+                // Screen wrapping
+                if (this.x < -this.width) this.x = CANVAS_WIDTH;
+                if (this.x > CANVAS_WIDTH) this.x = -this.width;
+                
+                // Floor/ceiling collision
+                if (this.y < 0) {
+                    this.y = 0;
+                    this.velocityY = 0;
+                }
+                if (this.y > CANVAS_HEIGHT - this.height) {
+                    this.y = CANVAS_HEIGHT - this.height;
+                    this.velocityY = -this.velocityY * 0.5; // Bounce slightly
+                }
+                
+                // Platform collision
+                this.checkPlatformCollision();
+                
+                // Update invulnerability
+                if (this.invulnerable) {
+                    this.invulnerableTimer -= deltaTime;
+                    if (this.invulnerableTimer <= 0) {
+                        this.invulnerable = false;
+                    }
+                }
+            }
+            
+            checkPlatformCollision() {
+                for (const platform of platforms) {
+                    if (this.velocityY > 0 && // Only collide when falling
+                        this.x + this.width > platform.x &&
+                        this.x < platform.x + platform.width &&
+                        this.y + this.height >= platform.y &&
+                        this.y + this.height <= platform.y + platform.height / 2) {
+                        
+                        this.y = platform.y - this.height;
+                        this.velocityY = 0;
+                        break;
+                    }
+                }
+            }
+            
+            makeInvulnerable(duration) {
+                this.invulnerable = true;
+                this.invulnerableTimer = duration;
+            }
+            
+            draw() {
+                // Blinking effect when invulnerable
+                if (this.invulnerable && Math.floor(this.invulnerableTimer / 100) % 2 === 0) {
+                    return;
+                }
+                
+                ctx.save();
+                ctx.fillStyle = this.color;
+                
+                // Draw the player as a knight on an ostrich
+                ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+                if (this.direction === -1) {
+                    ctx.scale(-1, 1);
+                }
+                
+                // Ostrich body
+                ctx.fillRect(-15, -5, 30, 20);
+                
+                // Ostrich head and neck
+                ctx.fillRect(-15, -15, 10, 15);
+                
+                // Knight
+                ctx.fillStyle = this.isPlayerTwo ? '#0088CC' : '#CC8800';
+                ctx.fillRect(-5, -20, 20, 15);
+                
+                // Lance
+                ctx.fillStyle = '#FFF';
+                ctx.fillRect(15, -15, 15, 5);
+                
+                // Wings animation based on flapping
+                if (this.isFlapping) {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.moveTo(-15, 0);
+                    ctx.lineTo(-30, -15);
+                    ctx.lineTo(-5, -5);
+                    ctx.fill();
+                }
+                
+                ctx.restore();
+            }
+        }
+        
+        // Enemy class
+        class Enemy {
+            constructor(x, y, type = 'buzzard') {
+                this.x = x;
+                this.y = y;
+                this.width = 40;
+                this.height = 40;
+                this.velocityX = Math.random() < 0.5 ? -1 : 1;
+                this.velocityY = 0;
+                this.type = type; // buzzard or hunter
+                this.flapCooldown = 0;
+                this.direction = this.velocityX > 0 ? 1 : -1;
+                
+                // Type-specific properties
+                if (type === 'hunter') {
+                    this.color = '#FF0000';
+                    this.intelligence = 0.7; // Higher chance to chase player
+                } else {
+                    this.color = '#00FF00';
+                    this.intelligence = 0.3; // Lower chance to chase player
+                }
+            }
+            
+            update(deltaTime, players) {
+                // AI behavior
+                this.flapCooldown -= deltaTime;
+                
+                // Find closest player to chase
+                let closestPlayer = null;
+                let closestDistance = Infinity;
+                
+                for (const player of players) {
+                    if (player) {
+                        const dx = player.x - this.x;
+                        const dy = player.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestPlayer = player;
+                        }
+                    }
+                }
+                
+                // Chase behavior
+                if (closestPlayer && Math.random() < this.intelligence) {
+                    // Chase horizontally
+                    if (closestPlayer.x < this.x) {
+                        this.velocityX -= 0.1;
+                        this.direction = -1;
+                    } else {
+                        this.velocityX += 0.1;
+                        this.direction = 1;
+                    }
+                    
+                    // Chase vertically - flap when above player
+                    if (closestPlayer.y < this.y && this.flapCooldown <= 0) {
+                        this.velocityY += FLAP_POWER * 0.7; // Enemies flap weaker than players
+                        this.flapCooldown = 500 + Math.random() * 500; // Random flap interval
+                    }
+                } else if (this.flapCooldown <= 0) {
+                    // Random flapping when not chasing
+                    if (Math.random() < 0.05) {
+                        this.velocityY += FLAP_POWER * 0.7;
+                        this.flapCooldown = 1000 + Math.random() * 1000;
+                    }
+                }
+                
+                // Apply physics
+                this.velocityY += GRAVITY;
+                this.velocityX *= FRICTION;
+                
+                // Limit speed
+                if (this.velocityX > MAX_SPEED * 0.7) this.velocityX = MAX_SPEED * 0.7;
+                if (this.velocityX < -MAX_SPEED * 0.7) this.velocityX = -MAX_SPEED * 0.7;
+                if (this.velocityY > MAX_SPEED) this.velocityY = MAX_SPEED;
+                if (this.velocityY < -MAX_SPEED) this.velocityY = -MAX_SPEED;
+                
+                // Update position
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+                
+                // Screen wrapping
+                if (this.x < -this.width) this.x = CANVAS_WIDTH;
+                if (this.x > CANVAS_WIDTH) this.x = -this.width;
+                
+                // Floor/ceiling collision
+                if (this.y < 0) {
+                    this.y = 0;
+                    this.velocityY = 0;
+                }
+                if (this.y > CANVAS_HEIGHT - this.height) {
+                    this.y = CANVAS_HEIGHT - this.height;
+                    this.velocityY = -this.velocityY * 0.5; // Bounce slightly
+                }
+                
+                // Platform collision
+                this.checkPlatformCollision();
+            }
+            
+            checkPlatformCollision() {
+                for (const platform of platforms) {
+                    if (this.velocityY > 0 && // Only collide when falling
+                        this.x + this.width > platform.x &&
+                        this.x < platform.x + platform.width &&
+                        this.y + this.height >= platform.y &&
+                        this.y + this.height <= platform.y + platform.height / 2) {
+                        
+                        this.y = platform.y - this.height;
+                        this.velocityY = 0;
+                        break;
+                    }
+                }
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.fillStyle = this.color;
+                
+                // Draw the enemy as a knight on an ostrich (similar to player but different color)
+                ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+                if (this.direction === -1) {
+                    ctx.scale(-1, 1);
+                }
+                
+                // Ostrich body
+                ctx.fillRect(-15, -5, 30, 20);
+                
+                // Ostrich head and neck
+                ctx.fillRect(-15, -15, 10, 15);
+                
+                // Knight - different color based on enemy type
+                ctx.fillStyle = this.type === 'hunter' ? '#990000' : '#009900';
+                ctx.fillRect(-5, -20, 20, 15);
+                
+                // Lance
+                ctx.fillStyle = '#FFF';
+                ctx.fillRect(15, -15, 15, 5);
+                
+                // Wings animation based on flap cooldown
+                if (this.flapCooldown > 0 && this.flapCooldown % 60 < 30) {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.moveTo(-15, 0);
+                    ctx.lineTo(-30, -15);
+                    ctx.lineTo(-5, -5);
+                    ctx.fill();
+                }
+                
+                ctx.restore();
+            }
+        }
+        
+        // Pterodactyl class (special enemy)
+        class Pterodactyl {
+            constructor() {
+                this.width = 60;
+                this.height = 30;
+                this.y = 100 + Math.random() * 200; // Keep them in the upper part of the screen
+                this.direction = Math.random() < 0.5 ? -1 : 1;
+                this.x = this.direction > 0 ? -this.width : CANVAS_WIDTH;
+                this.speed = 3 + Math.random() * 2;
+                this.velocityX = this.speed * this.direction;
+                this.velocityY = Math.sin(Date.now() / 500) * 2; // Wavy motion
+                this.scoreValue = 1000;
+            }
+            
+            update() {
+                // Update position with simple movement
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+                
+                // Wavy motion
+                this.velocityY = Math.sin(Date.now() / 500) * 2;
+                
+                // Check if off-screen
+                return !(this.x < -this.width || this.x > CANVAS_WIDTH);
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.fillStyle = '#FF00FF'; // Purple for pterodactyls
+                
+                ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+                if (this.direction === -1) {
+                    ctx.scale(-1, 1);
+                }
+                
+                // Body
+                ctx.fillRect(-20, -10, 40, 20);
+                
+                // Wings
+                ctx.beginPath();
+                ctx.moveTo(-20, 0);
+                ctx.lineTo(-40, -20 + (Math.sin(Date.now() / 200) * 10)); // Animated wings
+                ctx.lineTo(-40, 10);
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.moveTo(20, 0);
+                ctx.lineTo(40, -20 + (Math.sin(Date.now() / 200) * 10)); // Animated wings
+                ctx.lineTo(40, 10);
+                ctx.fill();
+                
+                // Head and beak
+                ctx.fillRect(20, -5, 15, 10);
+                
+                ctx.restore();
+            }
+        }
+        
+        // Egg class (spawned when enemies are defeated)
+        class Egg {
+            constructor(x, y, scoreValue) {
+                this.x = x;
+                this.y = y;
+                this.width = 20;
+                this.height = 25;
+                this.velocityY = 0;
+                this.scoreValue = scoreValue || 250;
+                this.hatchTimer = 5000; // Time before egg hatches back into an enemy
+            }
+            
+            update(deltaTime) {
+                // Apply gravity
+                this.velocityY += GRAVITY;
+                this.y += this.velocityY;
+                
+                // Floor collision
+                if (this.y > CANVAS_HEIGHT - this.height) {
+                    this.y = CANVAS_HEIGHT - this.height;
+                    this.velocityY = 0;
+                }
+                
+                // Platform collision
+                for (const platform of platforms) {
+                    if (this.velocityY > 0 && // Only collide when falling
+                        this.x + this.width > platform.x &&
+                        this.x < platform.x + platform.width &&
+                        this.y + this.height >= platform.y &&
+                        this.y + this.height <= platform.y + platform.height / 2) {
+                        
+                        this.y = platform.y - this.height;
+                        this.velocityY = 0;
+                        break;
+                    }
+                }
+                
+                // Hatch timer countdown
+                this.hatchTimer -= deltaTime;
+                return this.hatchTimer > 0; // Return false when egg should hatch
+            }
+            
+            draw() {
+                ctx.fillStyle = '#FFFFFF';
+                
+                // Draw egg
+                ctx.beginPath();
+                ctx.ellipse(this.x + this.width / 2, this.y + this.height / 2, 
+                            this.width / 2, this.height / 2, 0, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Draw cracks as egg gets closer to hatching
+                if (this.hatchTimer < 2000) {
+                    ctx.strokeStyle = '#000000';
+                    ctx.beginPath();
+                    ctx.moveTo(this.x + 5, this.y + 10);
+                    ctx.lineTo(this.x + 10, this.y + 5);
+                    ctx.moveTo(this.x + 15, this.y + 15);
+                    ctx.lineTo(this.x + 10, this.y + 20);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        // Platform class
+        class Platform {
+            constructor(x, y, width, destructible = false) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = 20;
+                this.destructible = destructible;
+                this.health = destructible ? 3 : Infinity;
+                this.color = destructible ? '#AA5500' : '#555555';
+            }
+            
+            damage() {
+                if (this.destructible) {
+                    this.health--;
+                    return this.health <= 0;
+                }
+                return false;
+            }
+            
+            draw() {
+                ctx.fillStyle = this.destructible ? 
+                    (this.health === 3 ? '#AA5500' : this.health === 2 ? '#884400' : '#663300') : 
+                    '#555555';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                
+                // Draw platform edge details
+                ctx.fillStyle = '#333333';
+                ctx.fillRect(this.x, this.y + this.height - 5, this.width, 5);
+            }
+        }
+        
+        // Initialize platforms
+        function initPlatforms() {
+            platforms = [
+                // Main platforms
+                new Platform(100, 200, 200),
+                new Platform(500, 200, 200),
+                new Platform(300, 350, 200),
+                new Platform(150, 500, 150),
+                new Platform(500, 500, 150),
+                
+                // Destructible platforms
+                new Platform(350, 150, 100, true),
+                new Platform(200, 300, 80, true),
+                new Platform(520, 300, 80, true),
+                
+                // Floor
+                new Platform(0, CANVAS_HEIGHT - 20, CANVAS_WIDTH)
+            ];
+        }
+        
+        // Start a new game
+        function startGame(numPlayers) {
+            gameState = 'playing';
+            menu.style.display = 'none';
+            playerCount = numPlayers;
+            
+            // Reset game state
+            score = [0, 0];
+            lives = 3;
+            wave = 1;
+            eggs = [];
+            enemies = [];
+            pterodactyls = [];
+            
+            // Create player(s)
+            players = [new Player(CANVAS_WIDTH / 3, CANVAS_HEIGHT / 2)];
+            if (playerCount > 1) {
+                players.push(new Player(2 * CANVAS_WIDTH / 3, CANVAS_HEIGHT / 2, true));
+            }
+            
+            // Initialize platforms
+            initPlatforms();
+            
+            // Update HUD
+            updateHUD();
+            
+            // Start game loop
+            lastFrameTime = Date.now();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // Game over
+        function endGame() {
+            gameState = 'gameOver';
+            gameOverScreen.style.display = 'flex';
+            scoreDisplay.textContent = `SCORE: ${playerCount > 1 ? score[0] + score[1] : score[0]}`;
+            // SOUND: Game over
+        }
+        
+        // Spawn enemies based on current wave
+        function spawnEnemies() {
+            const now = Date.now();
+            
+            // Regular enemy spawning
+            if (now - lastEnemySpawn > enemySpawnInterval && enemies.length < wave * 2 + 1) {
+                lastEnemySpawn = now;
+                
+                if (Math.random() < enemySpawnChance) {
+                    // Determine enemy type based on wave
+                    const enemyType = Math.random() < wave * 0.1 ? 'hunter' : 'buzzard';
+                    
+                    // Spawn at random position at the top
+                    const x = Math.random() * (CANVAS_WIDTH - 40);
+                    enemies.push(new Enemy(x, 0, enemyType));
+                }
+            }
+            
+            // Pterodactyl spawning
+            if (now - lastPterodactylSpawn > pterodactylSpawnInterval && wave > 1) {
+                lastPterodactylSpawn = now;
+                
+                if (Math.random() < pterodactylSpawnChance) {
+                    pterodactyls.push(new Pterodactyl());
+                }
+            }
+        }
+        
+        // Check if wave is complete (all enemies defeated)
+        function checkWaveComplete() {
+            if (enemies.length === 0 && eggs.length === 0) {
+                wave++;
+                
+                // Make game harder with each wave
+                enemySpawnInterval = Math.max(1000, 5000 - wave * 300);
+                enemySpawnChance = Math.min(0.9, 0.7 + wave * 0.05);
+                pterodactylSpawnChance = Math.min(0.5, 0.3 + wave * 0.03);
+                
+                // Update HUD
+                updateHUD();
+                
+                // Spawn some initial enemies for the new wave
+                for (let i = 0; i < wave; i++) {
+                    const enemyType = Math.random() < wave * 0.1 ? 'hunter' : 'buzzard';
+                    const x = Math.random() * (CANVAS_WIDTH - 40);
+                    enemies.push(new Enemy(x, 0, enemyType));
+                }
+            }
+        }
+        
+        // Check collisions between objects
+        function checkCollisions() {
+            // Players with enemies
+            for (let i = 0; i < players.length; i++) {
+                const player = players[i];
+                if (!player || player.invulnerable) continue;
+                
+                // Player with enemies
+                for (let j = 0; j < enemies.length; j++) {
+                    const enemy = enemies[j];
+                    
+                    if (collision(player, enemy)) {
+                        // Joust collision mechanics - higher rider wins
+                        if (player.y + player.height * 0.8 < enemy.y) {
+                            // Player wins - enemy becomes an egg
+                            const scoreValue = enemy.type === 'hunter' ? 500 : 250;
+                            eggs.push(new Egg(enemy.x, enemy.y, scoreValue));
+                            score[i] += scoreValue;
+                            enemies.splice(j, 1);
+                            j--;
+                            
+                            // SOUND: Enemy defeat
+                        } else {
+                            // Enemy wins - player loses a life
+                            playerHit(i);
+                        }
+                    }
+                }
+                
+                // Player with pterodactyls
+                for (let j = 0; j < pterodactyls.length; j++) {
+                    const pterodactyl = pterodactyls[j];
+                    
+                    if (collision(player, pterodactyl)) {
+                        // Pterodactyls are always dangerous
+                        playerHit(i);
+                        
+                        // Remove pterodactyl after hit
+                        pterodactyls.splice(j, 1);
+                        j--;
+                    }
+                }
+                
+                // Player with eggs
+                for (let j = 0; j < eggs.length; j++) {
+                    const egg = eggs[j];
+                    
+                    if (collision(player, egg)) {
+                        // Collect egg
+                        score[i] += egg.scoreValue;
+                        eggs.splice(j, 1);
+                        j--;
+                        
+                        // SOUND: Egg collection
+                    }
+                }
+            }
+            
+            // Check for players colliding with each other (in 2 player mode)
+            if (playerCount > 1 && players[0] && players[1] && !players[0].invulnerable && !players[1].invulnerable) {
+                if (collision(players[0], players[1])) {
+                    // Higher rider wins (Joust mechanic)
+                    if (players[0].y + players[0].height * 0.8 < players[1].y) {
+                        playerHit(1);
+                    } else if (players[1].y + players[1].height * 0.8 < players[0].y) {
+                        playerHit(0);
+                    }
+                    // If neither is clearly above the other, they bounce off each other
+                    else {
+                        const tempVX = players[0].velocityX;
+                        const tempVY = players[0].velocityY;
+                        players[0].velocityX = players[1].velocityX;
+                        players[0].velocityY = players[1].velocityY;
+                        players[1].velocityX = tempVX;
+                        players[1].velocityY = tempVY;
+                    }
+                }
+            }
+        }
+        
+        // Handle player being hit
+        function playerHit(playerIndex) {
+            // SOUND: Player death
+            
+            // Reduce lives
+            if (playerCount === 1 || playerIndex === 0) {
+                lives--;
+                if (lives <= 0) {
+                    endGame();
+                    return;
+                }
+            }
+            
+            // In 2-player mode, if P2 is hit, they're just removed temporarily
+            if (playerCount > 1 && playerIndex === 1) {
+                players[playerIndex] = null;
+                setTimeout(() => {
+                    players[playerIndex] = new Player(Math.random() * CANVAS_WIDTH, 0, true);
+                    players[playerIndex].makeInvulnerable(3000);
+                }, 3000);
+            } else {
+                // Position the player randomly at the top
+                players[playerIndex].x = Math.random() * CANVAS_WIDTH;
+                players[playerIndex].y = 0;
+                players[playerIndex].velocityX = 0;
+                players[playerIndex].velocityY = 0;
+                players[playerIndex].makeInvulnerable(3000);
+            }
+            
+            // Update HUD
+            updateHUD();
+        }
+        
+        // Utility function to check collision between two objects
+        function collision(obj1, obj2) {
+            return obj1.x < obj2.x + obj2.width &&
+                   obj1.x + obj1.width > obj2.x &&
+                   obj1.y < obj2.y + obj2.height &&
+                   obj1.y + obj1.height > obj2.y;
+        }
+        
+        // Update HUD display
+        function updateHUD() {
+            p1ScoreDisplay.textContent = `P1: ${score[0]}`;
+            p2ScoreDisplay.textContent = playerCount > 1 ? `P2: ${score[1]}` : '';
+            livesDisplay.textContent = `LIVES: ${lives}`;
+            waveDisplay.textContent = `WAVE: ${wave}`;
+        }
+        
+        // Main game loop
+        let lastFrameTime = 0;
+        function gameLoop() {
+            const now = Date.now();
+            const deltaTime = now - lastFrameTime;
+            lastFrameTime = now;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            
+            if (gameState === 'playing') {
+                // Spawn enemies
+                spawnEnemies();
+                
+                // Update players
+                for (let i = 0; i < players.length; i++) {
+                    if (players[i]) {
+                        players[i].update(deltaTime);
+                    }
+                }
+                
+                // Update enemies
+                for (let i = 0; i < enemies.length; i++) {
+                    enemies[i].update(deltaTime, players);
+                }
+                
+                // Update pterodactyls
+                for (let i = 0; i < pterodactyls.length; i++) {
+                    const isAlive = pterodactyls[i].update();
+                    if (!isAlive) {
+                        pterodactyls.splice(i, 1);
+                        i--;
+                    }
+                }
+                
+                // Update eggs
+                for (let i = 0; i < eggs.length; i++) {
+                    const isAlive = eggs[i].update(deltaTime);
+                    if (!isAlive) {
+                        // Egg hatches back into an enemy
+                        enemies.push(new Enemy(eggs[i].x, eggs[i].y));
+                        eggs.splice(i, 1);
+                        i--;
+                    }
+                }
+                
+                // Check collisions
+                checkCollisions();
+                
+                // Check if wave is complete
+                checkWaveComplete();
+                
+                // Draw everything
+                // Draw platforms
+                for (const platform of platforms) {
+                    platform.draw();
+                }
+                
+                // Draw eggs
+                for (const egg of eggs) {
+                    egg.draw();
+                }
+                
+                // Draw enemies
+                for (const enemy of enemies) {
+                    enemy.draw();
+                }
+                
+                // Draw pterodactyls
+                for (const pterodactyl of pterodactyls) {
+                    pterodactyl.draw();
+                }
+                
+                // Draw players
+                for (const player of players) {
+                    if (player) {
+                        player.draw();
+                    }
+                }
+                
+                // Request next frame
+                requestAnimationFrame(gameLoop);
+            }
+        }
+        
+        // Draw the initial menu
+        function drawMenu() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            
+            // Draw title
+            ctx.fillStyle = '#FFCC00';
+            ctx.font = '48px ArcadeFont';
+            ctx.textAlign = 'center';
+            ctx.fillText('JOUST', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 3);
+            
+            // Draw menu options
+            ctx.fillStyle = '#FFF';
+            ctx.font = '24px ArcadeFont';
+            ctx.fillText('ONE PLAYER', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+            ctx.fillText('TWO PLAYERS', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 40);
+            
+            // Draw instructions
+            ctx.font = '16px ArcadeFont';
+            ctx.fillText('P1: SPACE TO FLAP | A/D TO MOVE', CANVAS_WIDTH / 2, CANVAS_HEIGHT - 80);
+            ctx.fillText('P2: UP ARROW TO FLAP | LEFT/RIGHT TO MOVE', CANVAS_WIDTH / 2, CANVAS_HEIGHT - 50);
+        }
+        
+        // Initial menu draw
+        drawMenu();
+    </script>
+</body>
+</html>

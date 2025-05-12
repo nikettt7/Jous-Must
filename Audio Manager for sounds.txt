@@ -1,0 +1,68 @@
+   // Audio Manager for sounds
+        const AudioManager = {
+            sounds: {},
+            soundsLoaded: 0,
+            totalSounds: 6, // Updated to include egg collected sound
+            
+            // Load all game sounds
+            init: function() {
+                // Define all your game sounds here
+                this.totalSounds = 6; // Updated to include egg collected sound
+                
+                // When you download the sounds from SoundCloud, replace these URLs
+                // with the paths to your local sound files
+                this.load('flap', 'D:\Launched Projects Itch.IO\Joust\\jump2.wav');
+                this.load('enemyDefeat', 'D:\Launched Projects Itch.IO\Joust\\enemydefeated.wav');
+                this.load('playerDeath', 'D:\Launched Projects Itch.IO\Joust\\Player Death.wav');
+                this.load('pterodactyl', 'D:\Launched Projects Itch.IO\Joust\\pterodactyl.mp3');
+                this.load('gameOver', 'D:\Launched Projects Itch.IO\Joust\\gameover.wav');
+                this.load('eggCollected', 'D:\Launched Projects Itch.IO\Joust\\egg collected.wav'); // Added egg collected sound
+                
+                /* 
+                Sound files from these sources:
+                Enemy defeated - https://soundcloud.com/miz36699/enemy-defeated-1
+                Pterodactyl - https://soundcloud.com/miz36699/pterodactyl-5
+                Player death - https://soundcloud.com/miz36699/player-death-4
+                Flap - https://soundcloud.com/miz36699/jump2-3
+                Game over - https://soundcloud.com/miz36699/gameover-2
+                Egg collected - https://soundcloud.com/miz36699/egg-collected
+                */
+                
+                console.log('Audio system initialized');
+            },
+            
+            // Load individual sounds
+            load: function(name, path) {
+                this.sounds[name] = new Audio(path);
+                this.sounds[name].addEventListener('canplaythrough', () => {
+                    this.soundsLoaded++;
+                    console.log(`Loaded sound: ${name}`);
+                    if (this.soundsLoaded === this.totalSounds) {
+                        console.log('All sounds loaded');
+                    }
+                });
+                this.sounds[name].addEventListener('error', (e) => {
+                    console.warn(`Error loading sound: ${name}`, e);
+                    // Continue even if sounds fail to load
+                    this.soundsLoaded++;
+                });
+            },
+            
+            // Play a sound
+            play: function(name) {
+                if (this.sounds[name]) {
+                    try {
+                        // Create a clone for overlapping sounds
+                        const sound = this.sounds[name].cloneNode();
+                        sound.volume = 0.5; // Adjust volume as needed
+                        sound.play().catch(e => {
+                            // Handle autoplay restrictions
+                            console.warn(`Couldn't play sound: ${name}`, e);
+                        });
+                    } catch (e) {
+                        console.warn(`Error playing sound: ${name}`, e);
+                    }
+                }
+            }
+        };
+     
